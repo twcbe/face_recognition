@@ -17,13 +17,13 @@ print("video capturing")
 
 
 # Load a sample picture and learn how to recognize it.
-srividhya_image = face_recognition.load_image_file("srividhya.jpg")
-shruti_image = face_recognition.load_image_file("shruti.jpg")
-vinodhini_image = face_recognition.load_image_file("vinodhini.jpg")
+person1_image = face_recognition.load_image_file("person1_image.jpg")
+person2_image = face_recognition.load_image_file("person2_image.jpg")
+person3_image = face_recognition.load_image_file("person3_image.jpg")
 
-srividhya_face_encoding = face_recognition.face_encodings(srividhya_image)[0]
-shruti_face_encoding = face_recognition.face_encodings(shruti_image)[0]
-vinodhini_face_encoding = face_recognition.face_encodings(vinodhini_image)[0]
+person1_face_encoding = face_recognition.face_encodings(person1_image)[0]
+person2_face_encoding = face_recognition.face_encodings(person2_image)[0]
+person3_face_encoding = face_recognition.face_encodings(person3_image)[0]
 
 
 # Initialize some variables
@@ -52,20 +52,20 @@ while True:
         face_names = []
         for face_encoding in face_encodings:
             # See if the face is a match for the known face(s)
-            match1 = face_recognition.compare_faces([srividhya_face_encoding], face_encoding)
-            match2 = face_recognition.compare_faces([shruti_face_encoding], face_encoding)
-            match3 = face_recognition.compare_faces([vinodhini_face_encoding], face_encoding)
+            match1 = face_recognition.compare_faces([person1_face_encoding], face_encoding)
+            match2 = face_recognition.compare_faces([person2_face_encoding], face_encoding)
+            match3 = face_recognition.compare_faces([person3_face_encoding], face_encoding)
 
             name = "Unknown"
 
             if match1[0]:
-                name = "Srividhya"
+                name = "P1"
                 names_list.append(name)
             if match2[0]:
-                name = "Shruti"
+                name = "P2"
                 names_list.append(name)
             if match3[0]:
-                name = "Vinodhini"
+                name = "P3"
                 names_list.append(name)
 
 
@@ -75,18 +75,18 @@ while True:
 
     if len(names_list)==50:
         print("list > 50")
-        srividhya = list(filter(lambda x: x == "Srividhya", names_list))
-        shruti = list(filter(lambda x: x == "Shruti", names_list))
-        vinodhini = list(filter(lambda x: x == "Vinodhini", names_list))
-        max_value=max(len(srividhya), len(shruti), len(vinodhini))
+        person1 = list(filter(lambda x: x == "P1", names_list))
+        person2 = list(filter(lambda x: x == "P2", names_list))
+        person3 = list(filter(lambda x: x == "P3", names_list))
+        max_value=max(len(person1), len(person2), len(person3))
         print("**************************************************")
         print(max_value)
-        if len(srividhya)==max_value:
-            print("Srividhya")
-        if len(shruti)==max_value:
-            print("Shruti")
-        if len(vinodhini)==max_value:
-            print("Vinodhini")
+        if len(person1)==max_value:
+            print("Person 1")
+        if len(person2)==max_value:
+            print("Person 2")
+        if len(person3)==max_value:
+            print("Person 3")
 
 
     # Display the results
