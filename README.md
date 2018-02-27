@@ -1,4 +1,4 @@
-To install dependencies
+to install dependencies
 brew install cmake
 brew install boost
 brew install boost-python --with-python3
